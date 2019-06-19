@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+var ownerslogin = require('./ownerslogin');
+var customerslogin = require('./customerslogin');
 const customerhome = require("./customerhome");
 const restaurant = require("./restaurant");
-
+app.use('/ownerslogin', ownerslogin);
+app.use('/customerslogin', customerslogin);
 app.use("/customerhome", customerhome);
 app.use("/restaurant", restaurant);
 
