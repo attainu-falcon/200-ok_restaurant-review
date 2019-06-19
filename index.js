@@ -3,6 +3,10 @@ const app = express();
 const customerhome = require("./customerhome");
 const restaurant = require("./restaurant");
 
+app.get("/", (req, res) => {
+  res.send("Welcome to homepage");
+});
+
 app.use("/customerhome", customerhome);
 app.use("/restaurant", restaurant);
 
