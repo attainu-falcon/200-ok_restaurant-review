@@ -1,5 +1,7 @@
 const express = require("express");
 const app = express();
+var ownerslogin = require("./ownerslogin");
+var customerslogin = require("./customerslogin");
 const customerhome = require("./customerhome");
 const restaurant = require("./restaurant");
 const ownerlanding = require("./ownerlanding");
