@@ -40,7 +40,22 @@ router.post("/reviews", (req, res) => {
     resId: resId,
     username: "Shahrukh"
   });
-
+  db.collection("reviews")
+    .find({ resId: resId })
+    .toArray((err, result) => {
+      if (err) throw err;
+      var ratingSum = 0;
+      var len = result.length;
+      for (var i = 0; i < len; i++) {
+        ratingSum += parseFloat(result[i].rating);
+      }
+      var avgRating = ratingSum / len;
+      var db = req.app.locals.db;
+      db.collection("restaurants").updateOne(
+        { _id: ObjectId(resId) },
+        { $set: { avgRating: avgRating } }
+      );
+    });
   res.redirect("/restaurant/" + resId);
 });
 

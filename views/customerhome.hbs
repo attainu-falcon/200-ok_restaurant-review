@@ -8,112 +8,18 @@
     <h1 class="mt-4 mb-0">Top Rated Restaurants</h1>
     <hr class="mt-3 mb-5">
 </div>
-{{!-- <div class=" container text-center my-4 py-3" style="background-color: #282c35; color: #ffffff">
-    <h1 class="">Top Rated Restaurants</h1>
-</div> --}}
 <div class="container mb-4">
     <div class="card-deck">
         {{#each data}}
         <div class="card mb-3" style="min-width: 300px; max-width: 350px">
             <a href="/restaurant/{{this._id}}"><img src="/images/{{this.photo1}}" class="card-img-top"></a>
             <div class="card-body">
-                <h5 class="card-title">{{this.restaurantName}} <span style="float:right; color:#fbb710;"><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i></span></h5>
+                <h5 class="card-title">{{this.restaurantName}} <span class="avgRating"
+                        style="float:right; color:#fbb710;">{{this.avgRating}}</span></h5>
                 <hr>
                 <p class="card-text" style="max-height: 200px; overflow:hidden;">{{this.description}}</p>
             </div>
         </div>
         {{/each}}
-        {{!-- <div class="card mb-3" style="min-width: 300px; max-width: 350px">
-            <a href="/restaurant/1"><img
-                    src="https://cdn.vossy.com/hotel_images/hotels/528856/les-bains-restaurant-view.jpg"
-                    class="card-img-top"></a>
-            <div class="card-body">
-                <h5 class="card-title">Lorem Ipsum <span style="float:right; color:#fbb710;"><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i><i class="fa fa-star-half"></i></span></h5>
-                <hr>
-                <p class="card-text" style="max-height: 200px; overflow:hidden;">Elit nisi
-                    et adipisicing nulla laborum
-                    occaecat
-                    cupidatat. Cillum consectetur
-                    pariatur ad occaecat ad reprehenderit nulla aliquip laborum eu. Lorem mollit reprehenderit nisi
-                    nulla nulla ipsum exercitation et duis nisi officia aliquip duis.</p>
-            </div>
-        </div>
-        <div class="card mb-3" style="min-width: 300px; max-width: 350px">
-            <a href="/restaurant/1"><img
-                    src="https://cdn.vossy.com/hotel_images/hotels/426873/aristi-mountain-resort-lobby-lounge.jpg"
-                    class="card-img-top"></a>
-            <div class="card-body">
-                <h5 class="card-title">Lorem Ipsum <span style="float:right; color:#fbb710;"><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i></span></h5>
-                <hr>
-                <p class="card-text" style="max-height: 200px; overflow:hidden;">Elit nisi
-                    et adipisicing nulla laborum
-                    occaecat
-                    cupidatat. Cillum consectetur
-                    pariatur ad occaecat ad reprehenderit nulla aliquip laborum eu. Lorem mollit reprehenderit nisi
-                    nulla nulla ipsum exercitation et duis nisi officia aliquip duis.</p>
-            </div>
-        </div>
-        <div class="card mb-3" style="min-width: 300px; max-width: 350px">
-            <a href="/restaurant/1"><img
-                    src="https://www.kransen-floor.de/images/product_images/original_images/6951-3.jpg"
-                    class="card-img-top"></a>
-            <div class="card-body">
-                <h5 class="card-title">Lorem Ipsum <span style="float:right; color:#fbb710;"><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star"></i></span></h5>
-                <hr>
-                <p class="card-text" style="max-height: 200px; overflow:hidden;">Anim
-                    commodo consectetur anim
-                    consectetur excepteur. Sint
-                    qui ullamco pariatur
-                    pariatur. Non et cillum ex sint non id exercitation sint. Id cillum fugiat pariatur duis elit irure
-                    ea dolore ullamco aliqua duis mollit labore. Ex tempor pariatur sint reprehenderit id amet
-                    adipisicing esse cupidatat magna culpa deserunt amet est. Sint nostrud nulla consequat aliqua culpa
-                    velit officia ea in. Qui eiusmod in sit exercitation officia ipsum sunt non eiusmod qui veniam nisi.
-                </p>
-            </div>
-        </div>
-        <div class="card mb-3" style="min-width: 300px; max-width: 350px">
-            <a href="/restaurant/1"><img
-                    src="https://cdn.vossy.com/hotel_images/hotels/179620/avalon-hotel-beverly-hills-pool-desk.jpg"
-                    class="card-img-top"></a>
-            <div class="card-body">
-                <h5 class="card-title">Lorem Ipsum <span style="float:right; color:#fbb710;"><i
-                            class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                            class="fa fa-star-half"></i></span></h5>
-                <hr>
-                <p class="card-text" style="max-height: 200px; overflow:hidden;">Elit nisi
-                    et adipisicing nulla laborum
-                    occaecat
-                    cupidatat. Cillum consectetur
-                    pariatur ad occaecat ad reprehenderit nulla aliquip laborum eu. Lorem mollit reprehenderit nisi
-                    nulla nulla ipsum exercitation et duis nisi officia aliquip duis.</p>
-            </div>
-        </div>
-        <div class="card mb-3" style="min-width: 300px; max-width: 350px">
-            <a href="/restaurant/1"><img
-                    src="https://www.puntatrieste.it/media/k2/galleries/329/thumbs/restaurant-corvara-alta-badia-1_19202.jpg"
-                    class="card-img-top"></a>
-            <span
-                style="position: absolute; top: 5px; left: 5px; color:#fbb710; background-color: rgba(255, 255, 255, 0.5);"><i
-                    class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i
-                    class="fa fa-star-half"></i></span>
-            <div class="card-body">
-                <h5 class="card-title text-center">Lorem Ipsum</h5>
-                <hr>
-                <p class="card-text" style="max-height: 200px; overflow:hidden;">Elit nisi
-                    et adipisicing nulla laborum
-                    occaecat
-                    cupidatat. Cillum consectetur
-                    pariatur ad occaecat ad reprehenderit nulla aliquip laborum eu. Lorem mollit reprehenderit nisi
-                    nulla nulla ipsum exercitation et duis nisi officia aliquip duis.</p>
-            </div>
-        </div> --}}
     </div>
 </div>
