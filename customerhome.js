@@ -5,6 +5,7 @@ router.get("/", (req, res) => {
   const db = req.app.locals.db;
   db.collection("restaurants")
     .find()
+    .sort({ avgRating: -1 })
     .toArray((err, result) => {
       if (err) throw err;
       res.render("customerhome", {
