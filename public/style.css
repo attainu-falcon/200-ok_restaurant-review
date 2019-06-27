@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css?family=Lora');
+
+html,body{
+background-image: url('https://image.shutterstock.com/image-photo/five-stars-on-dark-background-260nw-645742324.jpg');
+background-size: cover;
+background-repeat: no-repeat;
+height: 100%;
+font-family: 'lora';
+font-style: italic;
+}
+
+.container{
+height: 100%;
+align-content: center;
+}
+
+
+.card{
+height: 330px;
+line-height: 48px;
+margin-top: auto;
+margin-bottom: auto;
+width: 400px;
+background-color: rgba(0,0,0,0.5) !important;
+}
+
+
+
+.card-header h3{
+color: white;
+font-size: 45px;
+font-weight: 500;
+}
+
+
+
+.input-group-prepend span{
+width: 50px;
+background-color: #cb202d;
+color: black;
+border:0 !important;
+}
+
+input:focus{
+outline: 0 0 0 0  !important;
+box-shadow: 0 0 0 0 !important;
+
+}
+
+.remember{
+color: white;
+}
+
+.remember input
+{
+width: 20px;
+height: 20px;
+margin-left: 15px;
+margin-right: 5px;
+}
+
+.login_btn{
+color: black;
+background-color: #cb202d;
+font-size: 19px;
+font-weight: 400;
+width: 100px;
+}
+
+.login_btn:hover{
+color: black;
+background-color: white;
+}
+
+
+.card-footer a {
+	margin-bottom: 30px;
+	font-size: 19px;
+	font-weight: 400;
+	color: white;
+}
+.cc{
+	font-size: 19px;
+	font-family: 'lora';
+	font-weight: 400; 
+}
+.cc a{
+	color: white;
+}
+.cc{
+	color:#cb202d;
+}
+
+form { 
+    font-family: 'lora';
+    font-size: 19px;
+    font-weight: 400;
+    color: rgb(223, 234, 238);
+    margin-top: 3%;
+    text-align: left;
+	line-height: 32px;
+	letter-spacing: 3px;
+	margin-left: 15px;
+
+	}
+p a{
+	color: white;
+}
+p{
+	color: white;
+}
+.btn{
+	margin-left: 5px;
+
+}
+
