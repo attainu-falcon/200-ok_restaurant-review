@@ -6,7 +6,15 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoClient = require("mongodb").MongoClient;
 
-mongoClient.connect("mongodb://127.0.0.1:27017", function(err, client){
+var url;
+if (process.env.MYdb)
+   url = process.env.MYdb
+   else
+   url = "mongodb://127.0.0.1:27017"
+
+   console.log(url);
+
+   mongoClient.connect(url, function(err, client){
     if(err) throw err;
     app.locals.db = client.db("tableHopper");
 })
