@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const customerhome = require("./customerhome");
@@ -5,13 +6,12 @@ const restaurant = require("./restaurant");
 const exphbs = require("express-handlebars");
 const mongoClient = require("mongodb").MongoClient;
 
-mongoClient.connect(
-  "mongodb+srv://shahrukh:shah123@cluster0-guil1.mongodb.net/test?retryWrites=true&w=majority",
-  (err, client) => {
-    if (err) throw err;
-    app.locals.db = client.db("tableHopper");
-  }
-);
+var url = process.env.MY_DB || process.env.MY_DB_LOCAL;
+
+mongoClient.connect(url, (err, client) => {
+  if (err) throw err;
+  app.locals.db = client.db("tableHopper");
+});
 
 app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
 app.set("view engine", "hbs");
