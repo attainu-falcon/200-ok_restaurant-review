@@ -6,7 +6,7 @@ const restaurant = require("./restaurant");
 const exphbs = require("express-handlebars");
 const mongoClient = require("mongodb").MongoClient;
 
-var url = process.env.MY_DB || process.env.MY_DB_LOCAL;
+var url = process.env.MY_DB;
 
 mongoClient.connect(url, (err, client) => {
   if (err) throw err;
@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 app.use("/customerhome", customerhome);
 app.use("/restaurant", restaurant);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

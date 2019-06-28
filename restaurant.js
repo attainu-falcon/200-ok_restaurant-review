@@ -5,6 +5,9 @@ const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 var reviews;
 var resId;
+// var storage = multer.memoryStorage();
+// var upload = multer({ storage: storage });
+var upload = multer({ dest: "public/images" });
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -39,12 +42,24 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/reviews", (req, res) => {
+router.post("/reviews", upload.single("photo"), async (req, res) => {
   var db = req.app.locals.db;
+  // cloudinary.uploader.upload(
+  //   req.file.path,
+  //   { width: 400, height: 300 },
+  //   function(error, result) {
+  //     console.log(result, error);
+  //   }
+  // );
+  const result = await cloudinary.uploader.upload(req.file.path, {
+    width: 400,
+    height: 300
+  });
+  console.log(result);
   db.collection("reviews").insert({
     rating: req.body.rating,
     review: req.body.review,
-    photo: req.body.photo,
+    photo: result.secure_url,
     resId: resId,
     username: "Shahrukh"
   });
