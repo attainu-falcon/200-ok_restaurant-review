@@ -44,13 +44,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/reviews", upload.single("photo"), async (req, res) => {
   var db = req.app.locals.db;
-  // cloudinary.uploader.upload(
-  //   req.file.path,
-  //   { width: 400, height: 300 },
-  //   function(error, result) {
-  //     console.log(result, error);
-  //   }
-  // );
+  
   const result = await cloudinary.uploader.upload(req.file.path, {
     width: 400,
     height: 300
