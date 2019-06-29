@@ -36,6 +36,7 @@ router.get("/:id", (req, res) => {
         option1: "Home",
         option2: "Logout",
         navadd1: "/customerhome",
+        navadd2: "/customerslogin/logout",
         data: result,
         reviewData: reviews
       });
@@ -44,7 +45,7 @@ router.get("/:id", (req, res) => {
 
 router.post("/reviews", upload.single("photo"), async (req, res) => {
   var db = req.app.locals.db;
-  
+
   const result = await cloudinary.uploader.upload(req.file.path, {
     width: 400,
     height: 300
