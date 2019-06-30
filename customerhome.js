@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
         assets: "customerhome",
         navlink: "Shahrukh",
         option1: "Logout",
-        navadd1: "/customerslogin/logout",
+        navadd1: "/logout",
         data: result
       });
     });

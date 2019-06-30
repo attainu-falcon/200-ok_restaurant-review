@@ -36,7 +36,7 @@ router.get("/:id", (req, res) => {
         option1: "Home",
         option2: "Logout",
         navadd1: "/customerhome",
-        navadd2: "/customerslogin/logout",
+        navadd2: "/logout",
         data: result,
         reviewData: reviews
       });
