@@ -1,16 +1,30 @@
 var express = require('express');
 var router = express.Router();
 
-    router.get('/login', function(request,response){
-            response.render('login');
+    router.get('/', function(request,response){
+            response.render('login',{
+                
+                    title: "Login",
+                    //assets: "customerslogin",
+                    navlink: "Login as Customer",
+                    option1: "Login as Restaurant Owner",
+                    navadd1: "/ownerslogin/login1"
+                  });
+            
     });
 
     router.get('/signup', function(request,response){
-            response.render('signup');
+            response.render('signup',{
+                title: "SignUp",
+                navlink: "Login as Customer",
+            });
     });
 
     router.get('/forget', function(request,response){
-            response.render('forget');
+            response.render('forget',{
+                title: "Reset Password",
+                navlink: "Login as Customer",
+            });
     });
 
     router.post('/forget', function(request,response){
@@ -24,14 +38,14 @@ var router = express.Router();
                      //app.locals.login=request.session.login;
                      request.session.username = result[i].username;
                     }
-                }response.redirect('/customerslogin/pass');
+                }response.redirect('/pass');
         
             });
     });
 
     router.get('/pass', function(request,response){
         if(request.session.forget == true){
-            response.send('success'  + ' <a href=/customerslogin/end>Login page</a>');
+            response.send('success'  + ' <a href=/end>Login page</a>');
         }
         else {
                 response.render('forget');
@@ -40,7 +54,7 @@ var router = express.Router();
         
     router.get('/end', function(request,response){
         request.session.destroy();
-          response.redirect('/customerslogin/login');
+          response.redirect('/');
     });
 
             // router.post('/reset', function(request, response){
@@ -81,7 +95,7 @@ var router = express.Router();
                  request.session.customerName = result[i].name;
                 }
             }
-            response.redirect("/customerslogin/user");
+            response.redirect("/user");
         });
         
         
@@ -89,16 +103,16 @@ var router = express.Router();
     
     router.get('/user', function(request,response){
         if(request.session.login == true){
-            response.send("welcome " + request.session.customerName + ". Do you want to <a  href='/customerslogin/logout'>logout</a>");
+            response.send("welcome " + request.session.customerName + ". Do you want to <a  href='/logout'>logout</a>");
         }
        else {
-           response.send("you are blocked" + " . Back to the <a  href='/customerslogin/logout'>login page</a>");
+           response.send("you are blocked" + " . Back to the <a  href='/logout'>login page</a>");
        }
     })
 
     router.get('/logout', function(request,response){
         request.session.destroy();
-        response.redirect('/customerslogin/login');
+        response.redirect('/');
     })
 
 module.exports = router;

@@ -1,13 +1,27 @@
-@import url('https://fonts.googleapis.com/css?family=Lora');
 
+@import url('https://fonts.googleapis.com/css?family=Lora');
 html,body{
-background-image: url('https://image.shutterstock.com/image-photo/five-stars-on-dark-background-260nw-645742324.jpg');
+background-image: url(/images/login.jpg);
 background-size: cover;
 background-repeat: no-repeat;
-height: 100%;
-font-family: 'lora';
-font-style: italic;
+height:  calc(100vh - 128px);
+font-family: "Lato", sans-serif;
+
 }
+
+body::-webkit-scrollbar {
+	width: 12px;
+  }
+
+  body::-webkit-scrollbar-track {
+	border-radius: 0px;
+	background-color: #cb202d;
+  }
+
+  body::-webkit-scrollbar-thumb {
+	border-radius: 0px;
+	background-color: #282c35;
+  }
 
 .container{
 height: 100%;
@@ -55,7 +69,7 @@ color: white;
 {
 width: 20px;
 height: 20px;
-margin-left: 15px;
+margin-left: 0px;
 margin-right: 5px;
 }
 
@@ -81,18 +95,15 @@ background-color: white;
 }
 .cc{
 	font-size: 19px;
-	font-family: 'lora';
 	font-weight: 400; 
+	color:#cb202d;
 }
 .cc a{
 	color: white;
 }
-.cc{
-	color:#cb202d;
-}
 
 form { 
-    font-family: 'lora';
+    font-family: "Lato", sans-serif;
     font-size: 19px;
     font-weight: 400;
     color: rgb(223, 234, 238);
@@ -100,7 +111,7 @@ form {
     text-align: left;
 	line-height: 32px;
 	letter-spacing: 3px;
-	margin-left: 15px;
+	margin-left: 5px;
 
 	}
 p a{

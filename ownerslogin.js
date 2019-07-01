@@ -2,15 +2,28 @@ var express = require('express');
 var router = express.Router();
 
    router.get('/login1', function(request,response){
-            response.render('login1');
-    });
+            response.render('login1',{
+            title: "Login",
+            //assets: "ownerslogin",
+            navlink: "Login as Restaurant Owner",
+            option1: "Login as Customer",
+            navadd1: "/"
+            });
+            });
 
     router.get('/signup1', function(request,response){
-            response.render('signup1');
+            response.render('signup1',{
+                title: "SignUp",
+                navlink: "Login as Restaurant Owner",
+            });
+            
     });
 
     router.get('/forget1', function(request,response){
-            response.render('forget1');
+            response.render('forget1',{
+                title: "Reset Password",
+                navlink: "Login as Restaurant Owner",
+            });
     })
     
     router.post('/forget1', function(request,response){

@@ -50,6 +50,6 @@ app.use(bodyParser.urlencoded());
 
 app.use('/ownerslogin', ownerslogin);
 
-app.use('/customerslogin', customerslogin);
+app.use('/', customerslogin);
 
 app.listen(process.env.PORT || "3000");
