@@ -20,10 +20,6 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use(express.static("public"));
 
-app.get("/", (req, res) => {
-  res.send("Welcome to homepage");
-});
-
 app.use("/customerhome", customerhome);
 app.use("/restaurant", restaurant);
 
