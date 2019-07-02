@@ -4,6 +4,7 @@ var router = express.Router();
     router.get('/', function(request,response){
             response.render('login',{                
                     title: "Login",
+                    assets: "css",
                     navlink: "Login as Customer",
                     option1: "Login as Restaurant Owner",
                     navadd1: "/ownerslogin/login1"
