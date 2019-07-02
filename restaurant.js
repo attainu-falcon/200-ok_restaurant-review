@@ -1,20 +1,80 @@
 const express = require("express");
 const router = express.Router();
+const ObjectId = require("mongodb").ObjectId;
+const multer = require("multer");
+const cloudinary = require("cloudinary").v2;
+var reviews;
+var resId;
+// var storage = multer.memoryStorage();
+// var upload = multer({ storage: storage });
+var upload = multer({ dest: "public/images" });
 
-router.get("/1", (req, res) => {
-  res.send("Welcome to Restaurant 1 Page");
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.API_KEY,
+  api_secret: process.env.API_SECRET
 });
 
-router.get("/2", (req, res) => {
-  res.send("Welcome to Restaurant 2 Page");
+router.get("/:id", (req, res) => {
+  resId = req.params.id;
+  var db = req.app.locals.db;
+  db.collection("reviews")
+    .find({ resId: req.params.id })
+    .toArray((err, result) => {
+      if (err) throw err;
+      reviews = result;
+    });
+  db.collection("restaurants")
+    .find({ _id: ObjectId(req.params.id) })
+    .toArray((err, result) => {
+      if (err) throw err;
+      res.render("restaurant", {
+        title: "Restaurant",
+        assets: "restaurant",
+        logolink: "/customerhome",
+        navlink: "Shahrukh",
+        option1: "Home",
+        option2: "Logout",
+        navadd1: "/customerhome",
+        navadd2: "/logout",
+        data: result,
+        reviewData: reviews
+      });
+    });
 });
 
-router.get("/3", (req, res) => {
-  res.send("Welcome to Restaurant 3 Page");
-});
+router.post("/reviews", upload.single("photo"), async (req, res) => {
+  var db = req.app.locals.db;
 
-router.get("/4", (req, res) => {
-  res.send("Welcome to Restaurant 4 Page");
+  const result = await cloudinary.uploader.upload(req.file.path, {
+    width: 400,
+    height: 300
+  });
+  console.log(result);
+  db.collection("reviews").insert({
+    rating: req.body.rating,
+    review: req.body.review,
+    photo: result.secure_url,
+    resId: resId,
+    username: "Shahrukh"
+  });
+  db.collection("reviews")
+    .find({ resId: resId })
+    .toArray((err, result) => {
+      if (err) throw err;
+      var ratingSum = 0;
+      var len = result.length;
+      for (var i = 0; i < len; i++) {
+        ratingSum += parseFloat(result[i].rating);
+      }
+      var avgRating = ratingSum / len;
+      var db = req.app.locals.db;
+      db.collection("restaurants").updateOne(
+        { _id: ObjectId(resId) },
+        { $set: { avgRating: avgRating } }
+      );
+    });
+  res.redirect("/restaurant/" + resId);
 });
 
 module.exports = router;
