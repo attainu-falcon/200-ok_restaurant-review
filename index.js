@@ -1,7 +1,8 @@
-var express = require('express');
+
+//var express = require('express');
 var hbs = require('express-handlebars');
 var path = require('path');
-var app = express();
+//var app = express();
 var session = require('express-session');
 var bodyParser = require('body-parser');
 var mongoClient = require("mongodb").MongoClient;
@@ -20,9 +21,31 @@ if (process.env.MYdb)
 })
 
 
-var ownerslogin = require('./ownerslogin');
+const express = require("express");
+const app = express();
+const ownerslogin = require("./ownerslogin");
+const customerslogin = require("./customerslogin");
+const customerhome = require("./customerhome");
+const restaurant = require("./restaurant");
+const ownerlanding = require("./ownerlanding");
+const addrestaurant = require("./addrestaurant");
+const editrestaurant = require("./editrestaurant");
 
-var customerslogin = require('./customerslogin');
+
+// app.get("/", (req, res) => {
+//   res.send("Welcome to Home Page");
+// });
+app.use("/ownerslogin", ownerslogin);
+//app.use("/customerslogin", customerslogin);
+app.use('/', customerslogin);
+app.use("/customerhome", customerhome);
+app.use("/restaurant", restaurant);
+app.use("/ownerlanding", ownerlanding);
+app.use("/addrestaurant", addrestaurant);
+app.use("/editrestaurant", editrestaurant);
+
+
+//var customerslogin = require('./customerslogin');
 
 //app.use('/static', express.static('public'));
 app.engine('handlebars', hbs({defaultLayout: "main"}));
@@ -48,8 +71,13 @@ app.use(session({
 
 app.use(bodyParser.urlencoded());
 
-app.use('/ownerslogin', ownerslogin);
+//app.use('/ownerslogin', ownerslogin);
 
-app.use('/', customerslogin);
 
-app.listen(process.env.PORT || "3000");
+
+//app.listen(process.env.PORT || "3000");
+
+app.listen(3000, () => {
+  console.log("listening on Port 3000");
+});
+
