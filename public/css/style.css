@@ -4,7 +4,7 @@ html,body{
 background-image: url(/images/login.jpg);
 background-size: cover;
 background-repeat: no-repeat;
-height:  calc(100vh - 128px);
+ height:  100%; 
 font-family: "Lato", sans-serif;
 
 }
@@ -23,10 +23,15 @@ body::-webkit-scrollbar {
 	background-color: #282c35;
   }
 
-.container{
-height: 100%;
-align-content: center;
-}
+ 
+.contaiiner {
+	height: calc(103vh - 150px);
+	font-family: "Lato", sans-serif; 
+	/* display: flex;  */
+	justify-content: center;
+	align-items: center;
+	margin-left: 10px;
+  }
 
 
 .card{
@@ -92,6 +97,7 @@ background-color: white;
 	font-size: 19px;
 	font-weight: 400;
 	color: white;
+	
 }
 .cc{
 	font-size: 19px;

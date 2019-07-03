@@ -1,5 +1,6 @@
-<form action = "/ownerslogin/signup1" method= "POST">
-<h2>Registration For Owners</h2>
+<div class="contaiiner">
+<form action = "/signup" method= "POST">
+<h2>Registration For Customers</h2>
 <div class="form-group">
     <label for="name" class="col-sm-3 control-label"></label>
         <div class="col-sm-6">
@@ -27,20 +28,8 @@
 <div class="btn">
     <button type="submit" class="btn btn-primary" id="regForm">Sign Up</button>
 </div>
-    <p class="lead mt-4">Have An Account? <a href="/ownerslogin/login1">Login</a></p>
+    <p class="lead mt-4">Have An Account? <a href="/">Login</a></p>
  </form> 
- <!--script>
- $("#regForm").click(function(){
-     var name  = $("#name").val();
-     var pass = $("#password").val();
-     var regData ={'name': name,'password':pass};
-      $.ajax({
-         type : 'POST',
-         url : '/signup',
-         data : regData,
-         success: function(data){
-         $("#container").append(data);
-         }
-       }); 
-   });
-        </script-->
+ </div>
+ 
+ 

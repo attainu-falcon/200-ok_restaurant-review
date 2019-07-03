@@ -5,7 +5,7 @@ var router = express.Router();
    router.get('/login1', function(request,response){
             response.render('login1',{
             title: "Login",
-            //assets: "ownerslogin",
+            assets: "style",
             navlink: "Login as Restaurant Owner",
             option1: "Login as Customer",
             navadd1: "/"
@@ -15,6 +15,7 @@ var router = express.Router();
     router.get('/signup1', function(request,response){
             response.render('signup1',{
                 title: "SignUp",
+                assets: "style",
                 navlink: "Login as Restaurant Owner",
             });
             
@@ -23,6 +24,7 @@ var router = express.Router();
     router.get('/forget1', function(request,response){
             response.render('forget1',{
                 title: "Reset Password",
+                assets: "style",
                 navlink: "Login as Restaurant Owner",
             });
     })
@@ -57,22 +59,6 @@ var router = express.Router();
              response.redirect('/ownerslogin/login1');
     });
 
-            // router.post('/reset1', function(request, response){
-            //     var db = request.app.locals.db;
-            //     var username = request.body.username;
-            //     db.collection("ownersLoginData").update({_id: username}, {$set: {password: request.body.password}}, function(err, result){
-            //         if (err) {
-            //             console.log('Error updating object: ' + err);
-            //             //res.send({'error':'An error has occurred'});
-            //             response.render('forget1');
-               
-            //         } else {
-            //            //console.log('' + result + ' document(s) updated');
-            //             response.redirect('/ownerslogin/end1');
-            //         }
-            //     });
-                   
-            // });
 
 
     router.post('/signup1', function(request, response){
