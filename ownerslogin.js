@@ -1,5 +1,6 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
+
 
    router.get('/login1', function(request,response){
             response.render('login1',{
@@ -100,3 +101,8 @@ var router = express.Router();
 
 
 module.exports = router;
+
+// router.get("/", function(request, response) {
+//   response.send("Welcome to owners page");
+// });
+// module.exports = router;
