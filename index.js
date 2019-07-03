@@ -1,39 +1,47 @@
-require("dotenv").config();
-const express = require("express");
-const app = express();
-const ownerslogin = require("./ownerslogin");
-const customerslogin = require("./customerslogin");
-const customerhome = require("./customerhome");
-const restaurant = require("./restaurant");
-const ownerlanding = require("./ownerlanding");
-const addrestaurant = require("./addrestaurant");
+// var express = require('express');
+// var hbs = require('express-handlebars');
+// var path = require('path');
+// var app = express();
+// var session = require('express-session');
+// var bodyParser = require('body-parser');
+// var mongoClient = require("mongodb").MongoClient;
 
-const exphbs = require("express-handlebars");
-const mongoClient = require("mongodb").MongoClient;
+// var url;
+// if (process.env.MYdb)
+//    url = process.env.MYdb
+//    else
+//    url = "mongodb://127.0.0.1:27017"
 
-var url = process.env.MY_DB;
+//    console.log(url);
 
-mongoClient.connect(url, (err, client) => {
-  if (err) throw err;
-  app.locals.db = client.db("tableHopper");
-});
+//    mongoClient.connect(url, function(err, client){
+//     if(err) throw err;
+//     app.locals.db = client.db("tableHopper");
+// })
 
-app.engine("hbs", exphbs({ defaultLayout: "main", extname: ".hbs" }));
-app.set("view engine", "hbs");
 
-app.use(express.urlencoded({ extended: false }));
+var ownerslogin = require('./ownerslogin');
 
-app.use(express.static("public"));
+var customerslogin = require('./customerslogin');
 
-app.use("/ownerslogin", ownerslogin);
-app.use("/customerslogin", customerslogin);
-app.use("/customerhome", customerhome);
-app.use("/restaurant", restaurant);
-app.use("/ownerlanding", ownerlanding);
-app.use("/addrestaurant", addrestaurant);
+app.engine('handlebars', hbs({defaultLayout: "main"}));
 
-var port = process.env.PORT || 8080;
+app.set('view engine', 'handlebars');
 
-app.listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+app.set('views', path.join(__dirname, 'views'));
+
+app.use(express.static('public'));
+
+app.use(session({
+    secret : "Express session secret!"
+}));
+
+app.use(bodyParser.urlencoded());
+
+app.use('/ownerslogin', ownerslogin);
+
+app.use('/', customerslogin);
+
+var port = process.env.PORT || "8000";
+
+app.listen(port);
