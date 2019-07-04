@@ -9,8 +9,6 @@ const restaurant = require("./restaurant");
 const ownerlanding = require("./ownerlanding");
 const addrestaurant = require("./addrestaurant");
 var session = require('express-session');
-var bodyParser = require('body-parser');
-var path = require('path');
 
 const exphbs = require("express-handlebars");
 const mongoClient = require("mongodb").MongoClient;
@@ -31,8 +29,7 @@ app.use(express.static("public"));
 
 
 app.use("/ownerslogin", ownerslogin);
-//app.use("/customerslogin", customerslogin);
-app.use('/', customerslogin);
+app.use("/", customerslogin);
 app.use("/customerhome", customerhome);
 app.use("/restaurant", restaurant);
 app.use("/ownerlanding", ownerlanding);
@@ -42,15 +39,10 @@ app.use(session({
     secret : "Express session secret!"
 }));
 
-app.use(bodyParser.urlencoded());
-
-
-
 var port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
-
 });
 
 
