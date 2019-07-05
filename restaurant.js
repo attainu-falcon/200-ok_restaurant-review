@@ -5,8 +5,6 @@ const multer = require("multer");
 const cloudinary = require("cloudinary").v2;
 var reviews;
 var resId;
-// var storage = multer.memoryStorage();
-// var upload = multer({ storage: storage });
 var upload = multer({ dest: "public/images" });
 
 cloudinary.config({
@@ -16,31 +14,35 @@ cloudinary.config({
 });
 
 router.get("/:id", (req, res) => {
-  resId = req.params.id;
-  var db = req.app.locals.db;
-  db.collection("reviews")
-    .find({ resId: req.params.id })
-    .toArray((err, result) => {
-      if (err) throw err;
-      reviews = result;
-    });
-  db.collection("restaurants")
-    .find({ _id: ObjectId(req.params.id) })
-    .toArray((err, result) => {
-      if (err) throw err;
-      res.render("restaurant", {
-        title: "Restaurant",
-        assets: "restaurant",
-        logolink: "/customerhome",
-        navlink: "Shahrukh",
-        option1: "Home",
-        option2: "Logout",
-        navadd1: "/customerhome",
-        navadd2: "/logout",
-        data: result,
-        reviewData: reviews
+  if (req.app.locals.loggedin == true) {
+    resId = req.params.id;
+    var db = req.app.locals.db;
+    db.collection("reviews")
+      .find({ resId: req.params.id })
+      .toArray((err, result) => {
+        if (err) throw err;
+        reviews = result;
       });
-    });
+    db.collection("restaurants")
+      .find({ _id: ObjectId(req.params.id) })
+      .toArray((err, result) => {
+        if (err) throw err;
+        res.render("restaurant", {
+          title: "Restaurant",
+          assets: "restaurant",
+          logolink: "/customerhome",
+          navlink: req.app.locals.username,
+          option1: "Home",
+          option2: "Logout",
+          navadd1: "/customerhome",
+          navadd2: "/logout",
+          data: result,
+          reviewData: reviews
+        });
+      });
+  } else {
+    res.redirect("/");
+  }
 });
 
 router.post("/reviews", upload.single("photo"), async (req, res) => {
