@@ -9,20 +9,26 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/', (req, res) => {
+
+
+router.post('/', (req, res)=> { 
     if (req.body._id == '')
         insertRecord(req, res);
         else
         updateRecord(req, res);
-});
+    });
+    
+        
+        
 
 
 function insertRecord(req, res) {
     var restaurant = new Restaurant();
-    restaurant.fullName = req.body.fullName;
-    restaurant.email = req.body.email;
-    restaurant.mobile = req.body.mobile;
-    restaurant.city = req.body.city;
+    restaurant.ownerName = req.body.ownerName;
+    restaurant.restaurantName = req.body.restaurantName;
+    restaurant.restaurantSlogan = req.body.restaurantSlogan;
+    restaurant.description = req.body.description;
+    restaurant.imageURL = result.secure_URL;
     restaurant.save((err, doc) => {
         if (!err)
             res.redirect('restaurant/list');
@@ -31,7 +37,7 @@ function insertRecord(req, res) {
                 handleValidationError(err, req.body);
                 res.render("restaurant/addOrEdit", {
                     viewTitle: "Insert restaurant",
-                    employee: req.body
+                    restaurant: req.body
                 });
             }
             else

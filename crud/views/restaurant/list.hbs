@@ -1,21 +1,27 @@
+<h3><a class="btn btn-secondary" href="/restaurant"><i class="fa fa-plus"></i> Create New</a> Restaurant List</h3>
 
-
-<h3><a class="btn btn-secondary" href="/restaurant"><i class="fa fa-plus"></i> Add New</a> Restaurant List</h3>{{#each list}}
+        {{#each list}}
+        
 <div class="card" style="width: 18rem;">
-  <img src="..." class="card-img-top" alt="...">
+  <img src={{this.imageURL}} class="card-img-top" alt="...">
   <div class="card-body">
-    <h5 class="card-title">{{this.fullName}}</h5>
-  
-    <p class="card-text">Some quick example text to build on the card title and make up.</p>
+    <h5 class="card-title">{{this.restaurantName}}</h5>
+    <p class="card-text">{{this.description}}</p>
   </div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{this.email}}</li>
-    <li class="list-group-item">{{this.mobile}}</li>
-    <li class="list-group-item">{{this.city}}</li>
+    <li class="list-group-item">{{this.ownerName}}</li>
+    <li class="list-group-item">{{this.restaurantSlogan}}</li>
+   
   </ul>
   <div class="card-body">
-<a href="/restaurant/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
-<a href="/restaurant/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+      <a href="/restaurant/{{this._id}}"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                <a href="/restaurant/delete/{{this._id}}" onclick="return confirm('Are you sure to delete this record ?');"><i class="fa fa-trash fa-lg" aria-hidden="true"></i></a>
+            </div>
+        {{/each}}
+    
+
+
   </div>
-  
-{{/each}}
+</div>
+
+        
