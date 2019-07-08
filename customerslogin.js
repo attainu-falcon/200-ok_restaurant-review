@@ -82,6 +82,7 @@ router.post("/auth", function(request, response) {
 router.get("/logout", function(request, response) {
   request.session.destroy();
   request.app.locals.loggedin = false;
+  req.app.locals.username = "";
   response.redirect("/");
 });
 

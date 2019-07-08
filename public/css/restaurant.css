@@ -12,6 +12,10 @@ body::-webkit-scrollbar-thumb {
   background-color: #282c35;
 }
 
+#addlink {
+  display: none;
+}
+
 #gallery::-webkit-scrollbar {
   width: 12px;
 }
