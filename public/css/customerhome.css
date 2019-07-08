@@ -11,6 +11,11 @@ body::-webkit-scrollbar-thumb {
   border-radius: 0px;
   background-color: #282c35;
 }
+
+#addlink {
+  display: none;
+}
+
 #searchcontainer {
   background: url(/images/customerhomeback.jpg) no-repeat;
   background-size: cover;
