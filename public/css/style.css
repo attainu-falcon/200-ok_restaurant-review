@@ -120,3 +120,6 @@ p {
 .btn {
   margin-left: 5px;
 }
+a:hover {
+  text-decoration: none;
+}
