@@ -58,7 +58,7 @@ router.post("/reviews", upload.single("photo"), async (req, res) => {
     review: req.body.review,
     photo: result.secure_url,
     resId: resId,
-    username: "Shahrukh"
+    username: req.app.locals.username
   });
   db.collection("reviews")
     .find({ resId: resId })
