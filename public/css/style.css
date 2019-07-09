@@ -27,7 +27,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .contaiiner {
-  height: calc(103vh - 150px);
+  height: calc(103vh - 148px);
   font-family: "Lato", sans-serif;
   justify-content: center;
   align-items: center;
