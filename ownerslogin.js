@@ -75,14 +75,14 @@ router.post("/auth", function(request, response) {
           request.app.locals.ownerusername = request.session.ownerusername;
         }
       }
-      response.redirect("/ownerlanding");
+      response.redirect("/ownerhome");
     });
 });
 
 router.get("/logout", function(request, response) {
   request.session.destroy();
-  request.app.locals.loggedin = false;
-  req.app.locals.ownerusername = "";
+  request.app.locals.ownerloggedin = false;
+  request.app.locals.ownerusername = "";
   response.redirect("/ownerslogin/login");
 });
 
