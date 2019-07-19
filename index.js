@@ -1,23 +1,23 @@
-// var express = require('express');
-// var hbs = require('express-handlebars');
-// var path = require('path');
-// var app = express();
-// var session = require('express-session');
-// var bodyParser = require('body-parser');
-// var mongoClient = require("mongodb").MongoClient;
+var express = require('express');
+var hbs = require('express-handlebars');
+var path = require('path');
+var app = express();
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var mongoClient = require("mongodb").MongoClient;
 
-// var url;
-// if (process.env.MYdb)
-//    url = process.env.MYdb
-//    else
-//    url = "mongodb://127.0.0.1:27017"
+var url;
+if (process.env.MYdb)
+   url = process.env.MYdb
+   else
+   url = "mongodb://127.0.0.1:27017"
 
-//    console.log(url);
+   console.log(url);
 
-//    mongoClient.connect(url, function(err, client){
-//     if(err) throw err;
-//     app.locals.db = client.db("tableHopper");
-// })
+   mongoClient.connect(url, function(err, client){
+    if(err) throw err;
+    app.locals.db = client.db("tableHopper");
+})
 
 
 var ownerslogin = require('./ownerslogin');
