@@ -1,0 +1,63 @@
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 0px;
+  background-color: #cb202d;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background-color: #282c35;
+}
+
+#addlink {
+  display: none;
+}
+
+#searchcontainer {
+  background: url(/images/customerhomeback.jpg) no-repeat;
+  background-size: cover;
+  height: 620px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#searchbox {
+  width: 800px;
+  height: 60px;
+  border-radius: 5px 0 0 5px;
+  border: none;
+  float: left;
+  padding: 10px;
+  color: black;
+}
+#searchbtn {
+  float: right;
+  height: 60px;
+  width: 200px;
+  border-radius: 0 5px 5px 0;
+  border: none;
+  background-color: #cb202d;
+  color: #ffffff;
+}
+form {
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 12px;
+  border-radius: 5px;
+}
+.card-text::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card-text::-webkit-scrollbar-track {
+  border-radius: 0px;
+  background-color: #ffffff;
+}
+
+.card-text::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background-color: #cb202d;
+}

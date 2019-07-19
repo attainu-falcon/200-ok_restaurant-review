@@ -1,0 +1,24 @@
+#imgcontainer {
+  background: url(/images/addrestaurantback.jpg) no-repeat;
+  background-size: cover;
+  height: 440px;
+  margin: 0;
+}
+
+#addlink {
+  display: none;
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  border-radius: 0px;
+  background-color: #cb202d;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 0px;
+  background-color: #282c35;
+}
