@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/attainu-falcon/200-ok_restaurant-review#readme",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-handlebars": "^3.1.0",
     "express-session": "^1.16.2",
     "cloudinary": "^1.14.0",
